@@ -141,7 +141,7 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to suggest changes or report issues.
+See [CONTRIBUTING.md](Markdowns/CONTRIBUTING.md) for how to suggest changes or report issues.
 
 ## Release Notes
 

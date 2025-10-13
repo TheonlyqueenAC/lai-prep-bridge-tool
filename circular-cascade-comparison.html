@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oral PrEP vs LAI-PrEP: Circular Cascade Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #1a202c;
+            font-size: 2.6em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #4a5568;
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 40px;
+        }
+
+        .circular-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .panel-header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        .panel-header.oral {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #059669;
+        }
+
+        .panel-header.lai {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+        }
+
+        .panel-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .panel-header.oral h2 {
+            color: #065f46;
+        }
+
+        .panel-header.lai h2 {
+            color: #92400e;
+        }
+
+        .panel-subtitle {
+            font-size: 1.15em;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .circular-container {
+            position: relative;
+            width: 700px;
+            height: 700px;
+            margin-top: 20px;
+        }
+
+        /* Center circle - Critical barrier */
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px;
+            height: 260px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
+            border: 6px solid #7f1d1d;
+            z-index: 10;
+        }
+
+        .center-title {
+            color: white;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .center-subtitle {
+            color: white;
+            font-size: 1em;
+            text-align: center;
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .center-stat {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        /* Process nodes */
+        .process-node {
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 3px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .process-node:hover {
+            transform: scale(1.1);
+        }
+
+        .node-label {
+            font-size: 1em;
+            margin-bottom: 4px;
+        }
+
+        .node-rate {
+            font-size: 0.75em;
+            opacity: 0.9;
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .node-retention {
+            font-size: 1.2em;
+            font-weight: 700;
+            background: rgba(0,0,0,0.2);
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-top: 3px;
+        }
+
+        /* Oral PrEP nodes */
+        .oral-node1 { top: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #059669 0%, #047857 100%); }
+        .oral-node2 { top: 70px; right: 90px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .oral-node3 { top: 200px; right: 30px; background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
+        .oral-node4 { bottom: 200px; right: 30px; background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%); }
+        .oral-node5 { bottom: 70px; right: 90px; background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%); }
+        .oral-node6 { bottom: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%); color: #065f46; }
+        .oral-node7 { bottom: 70px; left: 90px; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #065f46; }
+        .oral-node8 { bottom: 200px; left: 30px; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); color: #065f46; }
+        .oral-node9 { top: 200px; left: 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+
+        /* LAI PrEP nodes */
+        .lai-node1 { top: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%); }
+        .lai-node2 { top: 70px; right: 90px; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%); }
+        .lai-node3 { top: 200px; right: 30px; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); }
+        .lai-node4 { bottom: 200px; right: 30px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        .lai-node5 { bottom: 70px; right: 90px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .lai-node6 { bottom: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); }
+        .lai-node7 { bottom: 70px; left: 90px; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+        .lai-node8 { bottom: 200px; left: 30px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); }
+
+        /* Barriers */
+        .barrier {
+            position: absolute;
+            background: #f3f4f6;
+            border: 3px solid #9ca3af;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #374151;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 140px;
+            text-align: center;
+            z-index: 5;
+        }
+
+        .barrier-critical {
+            background: #fef2f2;
+            border-color: #dc2626;
+            color: #991b1b;
+        }
+
+        .barrier1 { top: 150px; right: -15px; }
+        .barrier2 { bottom: 150px; right: -15px; }
+        .barrier3 { bottom: 170px; left: -25px; }
+        .barrier4 { top: 170px; left: -25px; }
+
+        /* Connection circles */
+        .connection-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px dashed #cbd5e0;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .circle1 { width: 520px; height: 520px; }
+        .circle2 { width: 420px; height: 420px; opacity: 0.5; }
+
+        /* Population legend */
+        .population-legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .legend-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .legend-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .legend-pop {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+
+        .legend-rate {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        .legend-note {
+            font-size: 0.8em;
+            color: #6b7280;
+            margin-top: 3px;
+        }
+
+        /* Key insights */
+        .insights-section {
+            margin-top: 50px;
+            padding: 35px;
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+            border-radius: 15px;
+            border: 3px solid #7c3aed;
+        }
+
+        .insights-title {
+            font-size: 1.8em;
+            color: #5b21b6;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .insight-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .insight-card h3 {
+            color: #5b21b6;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        .insight-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        .stat-highlight {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1600px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oral PrEP vs. LAI-PrEP: Circular Cascade Comparison</h1>
+        <p class="subtitle">Identifying Critical Barriers Across the Prevention Continuum</p>
+
+        <div class="comparison-grid">
+            <!-- LEFT: Oral PrEP Circular Model -->
+            <div class="circular-panel">
+                <div class="panel-header oral">
+                    <h2>ORAL PrEP CASCADE</h2>
+                    <p class="panel-subtitle">Same-Day Start Available • Daily Pill</p>
+                </div>
+
+                <div class="circular-container">
+                    <div class="connection-circle circle1"></div>
+                    <div class="connection-circle circle2"></div>
+
+                    <!-- Center: Critical Drop-off Point -->
+                    <div class="center-circle">
+                        <div class="center-title">ADHERENCE &<br>PERSISTENCE</div>
+                        <div class="center-subtitle">Critical Barrier</div>
+                        <div class="center-stat">40-48% Lost</div>
+                    </div>
+
+                    <!-- Process nodes with retention rates -->
+                    <div class="process-node oral-node1">
+                        <div class="node-label">1. Awareness</div>
+                        <div class="node-retention">100%</div>
+                        <div class="node-rate">MSM: 85-90%<br>Trans: 50-70%</div>
+                    </div>
+
+                    <div class="process-node oral-node2">
+                        <div class="node-label">2. Willingness</div>
+                        <div class="node-retention">90-95%</div>
+                        <div class="node-rate">Interested</div>
+                    </div>
+
+                    <div class="process-node oral-node3">
+                        <div class="node-label">3. Eligibility</div>
+                        <div class="node-retention">85-90%</div>
+                        <div class="node-rate">Meet criteria</div>
+                    </div>
+
+                    <div class="process-node oral-node4">
+                        <div class="node-label">4. Access</div>
+                        <div class="node-retention">75-85%</div>
+                        <div class="node-rate">Insurance/appt</div>
+                    </div>
+
+                    <div class="process-node oral-node5">
+                        <div class="node-label">5. Linkage</div>
+                        <div class="node-retention">75-80%</div>
+                        <div class="node-rate">Attend appt</div>
+                    </div>
+
+                    <div class="process-node oral-node6">
+                        <div class="node-label">6. Prescription</div>
+                        <div class="node-retention">75-80%</div>
+                        <div class="node-rate">Same-day start</div>
+                    </div>
+
+                    <div class="process-node oral-node7">
+                        <div class="node-label">7. Initiation</div>
+                        <div class="node-retention">70-78%</div>
+                        <div class="node-rate">Fill Rx, start</div>
+                    </div>
+
+                    <div class="process-node oral-node8">
+                        <div class="node-label">8. Adherence</div>
+                        <div class="node-retention">52-62%</div>
+                        <div class="node-rate">6 mo retention</div>
+                    </div>
+
+                    <div class="process-node oral-node9">
+                        <div class="node-label">9. Persistence</div>
+                        <div class="node-retention">52%</div>
+                        <div class="node-rate">Continued use</div>
+                    </div>
+
+                    <!-- Barriers -->
+                    <div class="barrier barrier1">
+                        Insurance Coverage
+                    </div>
+                    <div class="barrier barrier2 barrier-critical">
+                        Daily Pill Burden
+                    </div>
+                    <div class="barrier barrier3">
+                        PrEP Stigma
+                    </div>
+                    <div class="barrier barrier4">
+                        Provider Access
+                    </div>
+                </div>
+
+                <!-- Population-specific data -->
+                <div class="population-legend">
+                    <div class="legend-title">Population-Specific Drop-off Rates (Oral PrEP)</div>
+                    <div class="legend-grid">
+                        <div class="legend-item">
+                            <div class="legend-pop">MSM (General)</div>
+                            <div class="legend-rate">38-40%</div>
+                            <div class="legend-note">Most persistent</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Trans Men</div>
+                            <div class="legend-rate">43.9%</div>
+                            <div class="legend-note">Moderate loss</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Trans Women</div>
+                            <div class="legend-rate">70%</div>
+                            <div class="legend-note">Highest attrition</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Black/Latino MSM</div>
+                            <div class="legend-rate">44-52%</div>
+                            <div class="legend-note">Structural barriers</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Young MSM (&lt;30)</div>
+                            <div class="legend-rate">44-69%</div>
+                            <div class="legend-note">Age-related loss</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Cisgender Women</div>
+                            <div class="legend-rate">48-56%</div>
+                            <div class="legend-note">Variable retention</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: LAI-PrEP Circular Model -->
+            <div class="circular-panel">
+                <div class="panel-header lai">
+                    <h2>LAI-PrEP CASCADE</h2>
+                    <p class="panel-subtitle">Mandatory 2-8 Week Bridge • Bimonthly Injection</p>
+                </div>
+
+                <div class="circular-container">
+                    <div class="connection-circle circle1"></div>
+                    <div class="connection-circle circle2"></div>
+
+                    <!-- Center: Critical Drop-off Point -->
+                    <div class="center-circle">
+                        <div class="center-title">BRIDGE<br>NAVIGATION</div>
+                        <div class="center-subtitle">2-8 Weeks</div>
+                        <div class="center-stat">47.1% Lost</div>
+                    </div>
+
+                    <!-- Process nodes with retention rates -->
+                    <div class="process-node lai-node1">
+                        <div class="node-label">1. Awareness</div>
+                        <div class="node-retention">100%</div>
+                        <div class="node-rate">LAI-PrEP exists</div>
+                    </div>
+
+                    <div class="process-node lai-node2">
+                        <div class="node-label">2. Willingness</div>
+                        <div class="node-retention">95%</div>
+                        <div class="node-rate">67% prefer inj</div>
+                    </div>
+
+                    <div class="process-node lai-node3">
+                        <div class="node-label">3. Eligibility</div>
+                        <div class="node-retention">90%</div>
+                        <div class="node-rate">Meet criteria</div>
+                    </div>
+
+                    <div class="process-node lai-node4">
+                        <div class="node-label">4. Prescription</div>
+                        <div class="node-retention">85%</div>
+                        <div class="node-rate">Provider Rx</div>
+                    </div>
+
+                    <div class="process-node lai-node5">
+                        <div class="node-label">6. Injection</div>
+                        <div class="node-retention">45%</div>
+                        <div class="node-rate">First dose</div>
+                    </div>
+
+                    <div class="process-node lai-node6">
+                        <div class="node-label">7. Persistence</div>
+                        <div class="node-retention">37%</div>
+                        <div class="node-rate">81-83% of those<br>who initiate</div>
+                    </div>
+
+                    <div class="process-node lai-node7">
+                        <div class="node-label">8. Retention</div>
+                        <div class="node-retention">37%</div>
+                        <div class="node-rate">Continued care</div>
+                    </div>
+
+                    <div class="process-node lai-node8">
+                        <div class="node-label">5. BRIDGE</div>
+                        <div class="node-retention" style="background: rgba(220, 38, 38, 0.3);">52.9%</div>
+                        <div class="node-rate">Navigate 2-8 wks</div>
+                    </div>
+
+                    <!-- Barriers -->
+                    <div class="barrier barrier1 barrier-critical">
+                        HIV Testing Requirements
+                    </div>
+                    <div class="barrier barrier2 barrier-critical">
+                        Appointment Scheduling
+                    </div>
+                    <div class="barrier barrier3 barrier-critical">
+                        Insurance Authorization
+                    </div>
+                    <div class="barrier barrier4">
+                        Lead-in Period
+                    </div>
+                </div>
+
+                <!-- Population-specific data -->
+                <div class="population-legend">
+                    <div class="legend-title">Bridge Period Attrition (All Populations)</div>
+                    <div class="legend-grid">
+                        <div class="legend-item">
+                            <div class="legend-pop">Overall</div>
+                            <div class="legend-rate">47.1%</div>
+                            <div class="legend-note">Lost pre-initiation</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Successfully Navigate</div>
+                            <div class="legend-rate">52.9%</div>
+                            <div class="legend-note">Receive first injection</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-pop">Post-Initiation</div>
+                            <div class="legend-rate">81-83%</div>
+                            <div class="legend-note">Excellent retention</div>
+                        </div>
+                        <div class="legend-item" style="grid-column: 1 / -1; background: #fef2f2;">
+                            <div class="legend-pop" style="color: #991b1b;">Critical Finding</div>
+                            <div class="legend-note" style="font-size: 0.95em; margin-top: 8px;">
+                                The bridge period creates a structural barrier that eliminates nearly half of motivated users <strong>before</strong> they can experience LAI-PrEP's superior persistence (81-83% vs oral's 52%)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insights Section -->
+        <div class="insights-section">
+            <div class="insights-title">🔬 Critical Insights: Where Barriers Occur</div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h3>Oral PrEP: Post-Initiation Adherence Problem</h3>
+                    <p>The critical barrier occurs <strong>after prescription and initiation</strong>. Patients can start same-day, but <span class="stat-highlight">40-48% discontinue</span> due to daily pill burden, side effects, and adherence challenges. Trans women face <span class="stat-highlight">70% discontinuation</span>—the highest of any group.</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3>LAI-PrEP: Pre-Initiation Access Problem</h3>
+                    <p>The critical barrier occurs <strong>before the first injection</strong>. Conservative initiation protocols create a mandatory 2-8 week bridge period where <span class="stat-highlight">47.1% are lost</span> to HIV testing, insurance authorization, and appointment coordination. Those who successfully navigate show <span class="stat-highlight">81-83% persistence</span>.</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3>The Implementation Paradox</h3>
+                    <p>LAI-PrEP was designed to solve oral PrEP's adherence problem, and it succeeds: <span class="stat-highlight">81-83%</span> retention vs. <span class="stat-highlight">52%</span> for oral. However, it creates a new problem—nearly half of motivated users are eliminated by structural barriers before experiencing this advantage.</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3>Population Disparities</h3>
+                    <p>Oral PrEP shows dramatic population differences: trans women (<span class="stat-highlight">70%</span> loss), young Black MSM (<span class="stat-highlight">69%</span> loss), and those without insurance face highest attrition. LAI-PrEP's bridge period affects all populations equally (<span class="stat-highlight">47.1%</span>)—it's a structural, not behavioral, barrier.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

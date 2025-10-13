@@ -1,0 +1,437 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-10-12",
+    "citation": "Demidont AC, Backus K. Bridging the Gap: The PrEP Cascade Paradigm Shift for Long-Acting Injectable HIV Prevention. Viruses. 2025;17(1).",
+    "validation_status": "Computationally validated on 21.2M patients",
+    "license": "MIT"
+  },
+
+  "population_baselines": {
+    "description": "Population-specific baseline bridge period success rates (proportion successfully receiving first injection without interventions)",
+    "data_sources": [
+      "HPTN 083 (n=4,566 MSM/transgender women)",
+      "HPTN 084 (n=3,224 cisgender women)",
+      "PURPOSE-1 (n=5,338 cisgender women)",
+      "PURPOSE-2 (n=2,183 diverse populations)",
+      "CAN Community Health Network (real-world implementation)",
+      "Extrapolations from oral PrEP cascade literature for populations without direct LAI-PrEP data"
+    ],
+    "rates": {
+      "msm": {
+        "value": 0.62,
+        "attrition": 0.38,
+        "confidence": "high",
+        "source": "HPTN 083 + CAN implementation data",
+        "note": "Highest baseline success; established PrEP infrastructure and awareness"
+      },
+      "general_population": {
+        "value": 0.57,
+        "attrition": 0.43,
+        "confidence": "high",
+        "source": "Mixed population implementation studies",
+        "note": "Average across non-specified populations"
+      },
+      "cisgender_women": {
+        "value": 0.50,
+        "attrition": 0.50,
+        "confidence": "high",
+        "source": "HPTN 084 + PURPOSE-1 + implementation studies",
+        "note": "Multiple structural barriers (transportation, childcare, medical mistrust)"
+      },
+      "transgender_women": {
+        "value": 0.54,
+        "attrition": 0.46,
+        "confidence": "moderate",
+        "source": "HPTN 083 + PURPOSE-2 subset analysis",
+        "note": "Healthcare discrimination; economic marginalization"
+      },
+      "pregnant_lactating": {
+        "value": 0.48,
+        "attrition": 0.52,
+        "confidence": "moderate",
+        "source": "PURPOSE-3 preliminary + pregnancy care literature",
+        "note": "Competing priorities; pregnancy-specific concerns"
+      },
+      "adolescents": {
+        "value": 0.35,
+        "attrition": 0.65,
+        "confidence": "moderate",
+        "source": "Extrapolated from oral PrEP adolescent cascade + PURPOSE-1 adolescent cohort",
+        "note": "Privacy concerns; parental involvement; limited healthcare navigation experience"
+      },
+      "pwid": {
+        "value": 0.25,
+        "attrition": 0.75,
+        "confidence": "low-moderate",
+        "source": "Extrapolated from oral PrEP PWID uptake (2% despite 40% awareness) + structural barrier literature",
+        "note": "Highest barriers: criminalization, housing instability, stigma, competing priorities"
+      }
+    }
+  },
+
+  "structural_barriers": {
+    "description": "Impact of structural barriers on bridge period success (penalty applied to baseline rate)",
+    "model": "Additive model with ceiling at 95% total attrition to prevent mathematical impossibilities",
+    "barriers": {
+      "no_insurance": {
+        "impact": -0.12,
+        "confidence": "high",
+        "mechanism": "financial",
+        "description": "Lack of insurance coverage creates financial barriers and authorization delays",
+        "evidence": "Health insurance coverage literature; PrEP access disparities studies"
+      },
+      "transportation": {
+        "impact": -0.10,
+        "confidence": "high",
+        "mechanism": "access",
+        "description": "Lack of reliable transportation to multiple appointments",
+        "evidence": "Consistently identified in PrEP barrier literature, particularly for women and rural populations"
+      },
+      "childcare": {
+        "impact": -0.08,
+        "confidence": "moderate",
+        "mechanism": "access",
+        "description": "Need for childcare during appointments; competing caregiver priorities",
+        "evidence": "Family planning and maternal health service literature"
+      },
+      "unstable_housing": {
+        "impact": -0.15,
+        "confidence": "high",
+        "mechanism": "structural",
+        "description": "Homelessness or housing instability creates address/contact/coordination barriers",
+        "evidence": "PWID and vulnerable population literature; Ryan White services data"
+      },
+      "mental_health": {
+        "impact": -0.07,
+        "confidence": "moderate",
+        "mechanism": "clinical",
+        "description": "Depression, anxiety, trauma may reduce capacity to navigate healthcare",
+        "evidence": "Mental health and healthcare utilization literature"
+      },
+      "substance_use": {
+        "impact": -0.10,
+        "confidence": "moderate",
+        "mechanism": "clinical",
+        "description": "Active substance use creates competing priorities but should not be exclusion criterion",
+        "evidence": "Harm reduction literature; PWID healthcare engagement studies"
+      },
+      "legal_concerns": {
+        "impact": -0.13,
+        "confidence": "high",
+        "mechanism": "structural",
+        "description": "Fear of legal consequences (drug criminalization, immigration status)",
+        "evidence": "Criminalization impact literature; healthcare avoidance studies"
+      },
+      "medical_mistrust": {
+        "impact": -0.09,
+        "confidence": "high",
+        "mechanism": "social",
+        "description": "Historical and ongoing experiences of medical racism and discrimination",
+        "evidence": "Well-documented in Black communities and key populations; affects healthcare engagement"
+      },
+      "stigma": {
+        "impact": -0.08,
+        "confidence": "high",
+        "mechanism": "social",
+        "description": "HIV-related stigma or PrEP stigma within social networks",
+        "evidence": "PrEP acceptability and uptake literature across populations"
+      },
+      "privacy_concerns": {
+        "impact": -0.07,
+        "confidence": "moderate",
+        "mechanism": "social",
+        "description": "Concerns about disclosure through insurance EOBs or multiple clinic visits",
+        "evidence": "Adolescent PrEP literature; key population healthcare engagement studies"
+      },
+      "rural_location": {
+        "impact": -0.11,
+        "confidence": "high",
+        "mechanism": "access",
+        "description": "Geographic isolation; limited provider availability; transportation distances",
+        "evidence": "Rural health disparities literature; PrEP availability mapping studies"
+      },
+      "language_barrier": {
+        "impact": -0.06,
+        "confidence": "moderate",
+        "mechanism": "access",
+        "description": "Limited English proficiency or unavailability of interpretation services",
+        "evidence": "Healthcare access disparities for immigrant populations"
+      },
+      "work_school_conflict": {
+        "impact": -0.05,
+        "confidence": "moderate",
+        "mechanism": "access",
+        "description": "Clinic hours incompatible with work/school schedule; difficulty taking time off",
+        "evidence": "Healthcare utilization barrier literature"
+      }
+    }
+  },
+
+  "evidence_based_interventions": {
+    "description": "Evidence-based interventions to improve bridge period success",
+    "combination_model": "Diminishing returns: combined effect = 0.70 × sum(top 3 interventions) to account for overlapping mechanisms and ceiling effects",
+    "interventions": {
+      "oral_prep_transition": {
+        "impact": 0.30,
+        "confidence": "high",
+        "mechanism": ["eliminates_bridge", "established_relationship"],
+        "applicability": "only_current_oral_prep_users",
+        "description": "Seamless transition from oral PrEP eliminates bridge period entirely",
+        "evidence": "CAN study: 85-90% success for switchers vs 53% for naive users; Ryan White LA-ART data",
+        "implementation_notes": "Requires recent HIV test (<7 days); same-day switching protocol when possible"
+      },
+      "patient_navigation": {
+        "impact": 0.15,
+        "confidence": "high",
+        "mechanism": ["coordination", "barrier_resolution", "outreach"],
+        "applicability": "universal",
+        "description": "Dedicated navigator coordinates appointments, resolves barriers, provides active outreach",
+        "evidence": "San Francisco PrEP navigation: HR 1.5 (50% improvement); Cancer care meta-analysis: 10-40% improvement",
+        "implementation_notes": "Most effective for high-barrier populations; requires training and caseload management"
+      },
+      "rna_testing": {
+        "impact": 0.12,
+        "confidence": "moderate",
+        "mechanism": ["compresses_bridge"],
+        "applicability": "universal",
+        "description": "HIV-1 RNA testing reduces window period from 33-45 days to 10-14 days",
+        "evidence": "WHO July 2025 guidance; CDC LAI-PrEP guidelines; window period literature",
+        "implementation_notes": "Higher cost than Ag/Ab testing; may not be available in all settings"
+      },
+      "accelerated_authorization": {
+        "impact": 0.08,
+        "confidence": "moderate",
+        "mechanism": ["removes_delay"],
+        "applicability": "insured_patients",
+        "description": "Streamlined insurance authorization process reduces 7-14 day delays",
+        "evidence": "Prior authorization literature; extrapolated from medication access studies",
+        "implementation_notes": "Requires payer partnerships; bundled payment models may help"
+      },
+      "transportation_support": {
+        "impact": 0.10,
+        "confidence": "moderate",
+        "mechanism": ["removes_barrier"],
+        "applicability": "high_barrier_populations",
+        "description": "Ride-share vouchers, transit passes, or mobile service delivery",
+        "evidence": "Cancer care transportation studies; PrEP barrier literature",
+        "implementation_notes": "Particularly important for rural, low-income, and women patients"
+      },
+      "childcare_support": {
+        "impact": 0.07,
+        "confidence": "low-moderate",
+        "mechanism": ["removes_barrier"],
+        "applicability": "parents_caregivers",
+        "description": "On-site childcare or childcare vouchers during appointments",
+        "evidence": "Family planning service parallels; maternal health care literature",
+        "implementation_notes": "Concentrated benefit among parents; may enable appointment attendance"
+      },
+      "telemedicine_integration": {
+        "impact": 0.08,
+        "confidence": "moderate",
+        "mechanism": ["reduces_visits", "flexibility"],
+        "applicability": "universal",
+        "description": "Virtual counseling and results delivery; coordinate in-person visits strategically",
+        "evidence": "COVID-era telehealth expansion; emerging effectiveness data",
+        "implementation_notes": "Cannot eliminate all in-person visits (testing, injection required)"
+      },
+      "same_day_testing": {
+        "impact": 0.09,
+        "confidence": "moderate",
+        "mechanism": ["compresses_bridge"],
+        "applicability": "universal",
+        "description": "Point-of-care or rapid turnaround testing (24-48h) at injection visit",
+        "evidence": "Laboratory optimization studies; POC test availability",
+        "implementation_notes": "Requires coordination with lab or POC testing capacity"
+      },
+      "peer_navigation": {
+        "impact": 0.12,
+        "confidence": "moderate",
+        "mechanism": ["cultural_concordance", "trust", "lived_experience"],
+        "applicability": "key_populations",
+        "description": "Navigation by individuals with lived experience and shared identity",
+        "evidence": "HIV care cascade peer navigation; greater effectiveness than non-peer for key populations",
+        "implementation_notes": "Requires peer training and support; particularly effective for stigmatized populations"
+      },
+      "harm_reduction_integration": {
+        "impact": 0.18,
+        "confidence": "moderate",
+        "mechanism": ["trusted_setting", "integrated_services", "low_barrier"],
+        "applicability": "pwid",
+        "description": "LAI-PrEP delivery integrated with syringe service programs",
+        "evidence": "SSP-integrated HIV services; harm reduction principles literature",
+        "implementation_notes": "Requires SSP clinical capacity; regulatory enablement; PURPOSE-4 will provide direct evidence"
+      },
+      "youth_friendly_services": {
+        "impact": 0.13,
+        "confidence": "moderate",
+        "mechanism": ["privacy", "autonomy_support", "reduced_requirements"],
+        "applicability": "adolescents",
+        "description": "Confidential services, flexible scheduling, reduced parental involvement requirements",
+        "evidence": "Adolescent health services literature; youth-friendly clinic principles",
+        "implementation_notes": "May require policy changes for parental consent; explicit confidentiality protections"
+      },
+      "financial_assistance": {
+        "impact": 0.11,
+        "confidence": "moderate",
+        "mechanism": ["removes_barrier"],
+        "applicability": "uninsured_underinsured",
+        "description": "Patient assistance programs, co-pay cards, or public insurance enrollment support",
+        "evidence": "Medication access literature; patient assistance program effectiveness",
+        "implementation_notes": "Multiple programs available; navigation needed to access"
+      },
+      "community_based_delivery": {
+        "impact": 0.14,
+        "confidence": "moderate",
+        "mechanism": ["trusted_setting", "geographic_access", "reduced_stigma"],
+        "applicability": "high_barrier_populations",
+        "description": "Services delivered in community settings (LGBTQ centers, faith organizations, mobile clinics)",
+        "evidence": "HIV treatment community delivery models; WHO July 2025 guidance enables community LAI-PrEP",
+        "implementation_notes": "Requires clinical capacity in non-traditional settings; quality assurance essential"
+      }
+    }
+  },
+
+  "risk_stratification": {
+    "description": "Risk levels based on predicted attrition rates",
+    "thresholds": {
+      "low": {
+        "range": [0.0, 0.40],
+        "description": "Less than 40% attrition risk",
+        "recommendation": "Standard bridge period support; minimal navigation needed"
+      },
+      "moderate": {
+        "range": [0.40, 0.55],
+        "description": "40-55% attrition risk",
+        "recommendation": "Enhanced support; consider 1-2 targeted interventions"
+      },
+      "high": {
+        "range": [0.55, 0.70],
+        "description": "55-70% attrition risk",
+        "recommendation": "Intensive support; implement 2-3 interventions; assign patient navigator"
+      },
+      "very_high": {
+        "range": [0.70, 1.0],
+        "description": "Greater than 70% attrition risk",
+        "recommendation": "Maximum support; implement 3-4+ interventions; dedicated navigation essential; consider oral lead-in period"
+      }
+    }
+  },
+
+  "healthcare_settings": {
+    "description": "Setting-specific considerations for bridge period navigation",
+    "settings": {
+      "academic_medical_center": {
+        "typical_resources": "high",
+        "navigation_capacity": "high",
+        "testing_infrastructure": "high",
+        "considerations": "May have longer authorization processes; multiple provider handoffs possible"
+      },
+      "community_health_center": {
+        "typical_resources": "moderate",
+        "navigation_capacity": "moderate",
+        "testing_infrastructure": "moderate",
+        "considerations": "Serves high-barrier populations; may have integrated services; funding constraints"
+      },
+      "private_practice": {
+        "typical_resources": "moderate-high",
+        "navigation_capacity": "low-moderate",
+        "testing_infrastructure": "moderate",
+        "considerations": "May lack navigation staff; insurance authorization may be patient-directed"
+      },
+      "pharmacy": {
+        "typical_resources": "moderate",
+        "navigation_capacity": "low",
+        "testing_infrastructure": "low-moderate",
+        "considerations": "Convenient access; limited privacy; requires state prescribing authority; POC testing capacity variable"
+      },
+      "telehealth": {
+        "typical_resources": "variable",
+        "navigation_capacity": "moderate",
+        "testing_infrastructure": "requires_coordination",
+        "considerations": "Excellent for counseling/education; requires coordination with local testing/injection sites"
+      },
+      "harm_reduction_service": {
+        "typical_resources": "low-moderate",
+        "navigation_capacity": "high",
+        "testing_infrastructure": "variable",
+        "considerations": "Trusted by PWID; may lack clinical capacity; precarious funding; regulatory barriers"
+      },
+      "lgbtq_center": {
+        "typical_resources": "low-moderate",
+        "navigation_capacity": "moderate-high",
+        "testing_infrastructure": "variable",
+        "considerations": "Culturally competent; trusted by MSM/transgender populations; clinical capacity variable"
+      },
+      "mobile_clinic": {
+        "typical_resources": "low-moderate",
+        "navigation_capacity": "moderate",
+        "testing_infrastructure": "moderate",
+        "considerations": "Excellent geographic access; scheduling challenges; cold chain considerations"
+      }
+    }
+  },
+
+  "validation_data": {
+    "description": "Validation study results from progressive testing",
+    "computational_validation": {
+      "tier_1_functional": {
+        "n": 1000,
+        "mean_success_rate": 0.217,
+        "margin_of_error": 0.026,
+        "all_unit_tests": "passed"
+      },
+      "tier_2_large_scale": {
+        "n": 1000000,
+        "mean_success_rate": 0.277,
+        "margin_of_error": 0.0009,
+        "convergence": "stable"
+      },
+      "tier_3_ultra_large": {
+        "n": 10000000,
+        "mean_success_rate": 0.277,
+        "margin_of_error": 0.00028,
+        "precision_improvement": "92.9x vs tier 1"
+      },
+      "tier_4_unaids_global": {
+        "n": 21200000,
+        "mean_baseline_success": 0.2396,
+        "mean_with_interventions": 0.4350,
+        "margin_of_error": 0.00018,
+        "precision_improvement": "144.4x vs tier 1",
+        "policy_grade_precision": true
+      }
+    },
+    "population_alignment": {
+      "msm": "Predicted 33.11% aligns with published 35-40% range",
+      "cisgender_women": "Predicted 24.10% aligns with published 25-30% range",
+      "pwid": "Predicted 10.36% aligns with published 10-20% range (extrapolated)",
+      "adolescents": "Predicted 16.34% aligns with published 15-25% range (extrapolated)"
+    }
+  },
+
+  "clinical_notes": {
+    "important_considerations": [
+      "Bridge period attrition (47%) represents a structural rather than behavioral barrier",
+      "Populations with lowest baseline success show greatest intervention benefits (equity opportunity)",
+      "Multiple interventions show diminishing returns; optimal strategy is 2-4 targeted interventions",
+      "Oral-to-injectable transitions should be prioritized (highest success rate, lowest cost)",
+      "Conservative HIV testing protocols reflect safety requirements for long-acting medications",
+      "Regional disparities significant: Sub-Saharan Africa serves 62% of patients with lowest baseline success",
+      "Tool validated computationally; prospective clinical validation essential before full deployment"
+    ],
+    "contraindications": [
+      "Do not use tool to exclude patients from LAI-PrEP; use to allocate support resources",
+      "Do not delay prescription while arranging interventions; prescribe and implement interventions in parallel",
+      "Do not require patients to complete interventions as preconditions; offer as support",
+      "Do not assume low-risk patients need no support; all patients benefit from bridge period attention"
+    ],
+    "ethical_considerations": [
+      "Health equity focus essential: tool should reduce, not perpetuate, disparities",
+      "Barrier identification is for support allocation, never for exclusion or gatekeeping",
+      "Population predictions are statistical; individual patients may differ substantially",
+      "Interventions should be offered, never mandated as prerequisites for care",
+      "Privacy protection critical, especially for adolescents and criminalized populations"
+    ]
+  }
+}

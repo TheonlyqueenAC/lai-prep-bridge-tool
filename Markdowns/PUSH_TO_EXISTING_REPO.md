@@ -356,7 +356,7 @@ matching the UNAIDS 2025 global PrEP target of 21.2 million users.
 Add version badge:
 ```markdown
 [![Latest Release](https://img.shields.io/github/v/release/TheonlyqueenAC/lai-prep-bridge-tool)](https://github.com/TheonlyqueenAC/lai-prep-bridge-tool/releases)
-[![Validation Scale](https://img.shields.io/badge/Validated-21.2M%20Patients-brightgreen)](.)
+[![Validation Scale](https://img.shields.io/badge/Validated-21.2M%20Patients-brightgreen)](..)
 ```
 
 ---
