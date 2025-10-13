@@ -3,7 +3,7 @@
 
 ---
 
-## 🌍 GLOBAL IMPACT AT A GLANCE
+## GLOBAL IMPACT AT A GLANCE
 
 ### The Numbers That Matter
 
@@ -31,7 +31,7 @@ This is 4.6x more precise than 1 million patient validation.
 
 ---
 
-## 🎯 TOP 5 CRITICAL FINDINGS
+##  TOP 5 CRITICAL FINDINGS
 
 ### 1️⃣ REGIONAL HEALTH EQUITY GAP: 7.64 PERCENTAGE POINTS
 
@@ -114,17 +114,17 @@ Only 8% of patients can succeed with minimal intervention.
 
 **Top 5 Most Impactful Interventions:**
 
-| Intervention | Patients | Effect Size | Implementation |
-|--------------|----------|-------------|----------------|
-| 🔔 SMS Navigation | 21.2M (100%) | Universal benefit | Deploy now |
-| 🧪 Accelerated HIV Testing | 10.6M (50%) | Critical safety | High priority |
-| 👥 Patient Navigation | 8.2M (39%) | Complex cases | Proven effective |
-| 💻 Telehealth Counseling | 5.3M (25%) | Access barriers | Scalable |
-| 👶 Childcare Support | 3.5M (16%) | Structural barrier | Essential |
+| Intervention           | Patients    | Effect Size        | Implementation |
+|--------------|---------|-------------|----------------    |------------------
+|SMS Navigation          | 21.2M (100%) | Universal benefit | Deploy now|
+|Accelerated HIV Testing | 10.6M (50%)  | Critical safety   | High priority|
+|Patient Navigation      | 8.2M (39%)   | Complex cases     | Proven effective|
+|Telehealth Counselor    | 5.3M (25%)   | Access barriers    | Scalable|
+|Childcare Support       | 3.5M (16%)   | Structural barrier | Essential|
 
 ---
 
-## 💰 RETURN ON INVESTMENT
+## RETURN ON INVESTMENT
 
 ### Budget Impact (Conservative Estimate)
 
@@ -142,7 +142,7 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## 🗺️ REGIONAL BREAKDOWN
+## REGIONAL BREAKDOWN
 
 ### Patient Distribution & Outcomes
 
@@ -156,7 +156,7 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## 📊 POPULATION PRIORITIES
+## POPULATION PRIORITIES
 
 ### Ranked by Need for Intervention
 
@@ -184,7 +184,7 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## ✅ IMPLEMENTATION CHECKLIST
+## POTENTIAL IMPLEMENTATION CHECKLIST
 
 ### Immediate Actions (Month 1-6)
 
@@ -210,22 +210,6 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## 🎓 PUBLICATION & DISSEMINATION
-
-### Target Journals (Ready for Submission)
-
-1. **The Lancet HIV** (Impact Factor: 16.8)
-   - Global health policy focus
-   - UNAIDS alignment
-   - Maximum visibility
-
-2. **JAIDS** (Impact Factor: 3.5)
-   - HIV clinical implementation
-   - Evidence-based practice
-
-3. **JIAS** (Impact Factor: 4.6)
-   - International AIDS society
-   - Policy implementation
 
 ### Key Messages for Policy Makers
 
@@ -237,26 +221,20 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## 🌐 ALIGNMENT WITH GLOBAL STRATEGIES
+## ALIGNMENT WITH GLOBAL STRATEGIES
 
-### ✅ UN Sustainable Development Goal 3.3
+### UN Sustainable Development Goal 3.3
 **End AIDS as a public health threat by 2030**
 
-### ✅ UNAIDS 95-95-95 Targets
+### UNAIDS 95-95-95 Targets
 **95% know status, 95% on treatment, 95% virally suppressed**
 
-### ✅ WHO PrEP Implementation Guidelines
+### WHO PrEP Implementation Guidelines
 **Evidence-based PrEP delivery recommendations**
 
 ---
 
-## 🚀 NEXT STEPS
-
-### For Policymakers
-1. Review full analysis document
-2. Allocate budget for high-priority regions (Sub-Saharan Africa)
-3. Implement universal SMS navigation
-4. Prioritize PWID and adolescent interventions
+## NEXT STEPS
 
 ### For Researchers
 1. Submit manuscript to The Lancet HIV
@@ -277,7 +255,7 @@ RETURN ON INVESTMENT: 11:1
 
 ---
 
-## 📞 CONTACT & COLLABORATION
+##  CONTACT & COLLABORATION
 
 This tool represents a **breakthrough in LAI-PrEP implementation science** validated at unprecedented global scale.
 
