@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "last_updated": "2025-01-12",
+  "version": "2.1.0",
+  "last_updated": "2025-10-17",
   "description": "Configuration file for LAI-PrEP Bridge Period Decision Support Tool",
   
   "populations": {
@@ -493,6 +493,7 @@
     "max_success_rate_with_interventions": 0.95,
     "minimum_bridge_duration_days": 2,
     "maximum_bridge_duration_days": 56,
+    "best_case_success_floor": 0.85,
     "bridge_duration_oral_prep_recent_test": [0, 3],
     "bridge_duration_oral_prep_no_recent_test": [7, 14],
     "bridge_duration_naive_recent_test": [14, 35],
