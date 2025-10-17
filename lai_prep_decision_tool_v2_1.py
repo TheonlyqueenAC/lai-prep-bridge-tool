@@ -14,11 +14,12 @@ New Features in v2.1:
 
 import json
 import os
-import numpy as np
 from dataclasses import dataclass, field, asdict
-from typing import List, Dict, Tuple, Optional, Set
 from datetime import datetime
 from pathlib import Path
+from typing import List, Dict, Tuple, Optional
+
+import numpy as np
 
 
 class ConfigurationError(Exception):
@@ -298,6 +299,16 @@ class LAIPrEPDecisionTool:
             )
         
         baseline_success_rate = 1 - baseline_attrition
+        
+        # Best-case success floor: oral PrEP + recent HIV test + no barriers
+        # Ensures zero-barrier best-case scenarios reflect real-world high success when the bridge can be eliminated
+        if (
+            profile.current_prep_status == "oral_prep"
+            and profile.recent_hiv_test
+            and len(profile.barriers) == 0
+        ):
+            best_case_floor = self.params.get('best_case_success_floor', 0.85)
+            adjusted_success_rate = max(adjusted_success_rate, best_case_floor)
         
         # Determine attrition risk category
         attrition_risk, risk_category = self._categorize_risk(1 - adjusted_success_rate)

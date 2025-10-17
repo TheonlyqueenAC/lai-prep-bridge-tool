@@ -179,3 +179,30 @@ This work builds on decades of HIV prevention research and the dedication of hea
 ⚠️ Clinical Use Disclaimer: This tool is intended to support, not replace, clinical judgment. All treatment decisions should be made in consultation with qualified healthcare providers.
 
 Last updated: October 2025 | Version 2.1
+
+
+
+## Re-running tests after upgrading
+
+It is recommended to re-run the test suite whenever you upgrade to a new version of the tool or update dependencies. This helps catch regressions in population logic, barrier handling, configuration, JSON export, and prediction methods.
+
+Quick steps:
+
+1) Install dev requirements (includes pytest)
+
+   pip install -r requirements-dev.txt
+
+2) Run the test suite
+
+   python run_tests.py            # verbose test output
+   python run_tests.py --quiet    # minimal output
+
+3) Optionally include configuration validation
+
+   python run_tests.py --all
+
+You can also run pytest directly if you prefer:
+
+   python -m pytest test_edge_cases.py -v --tb=short
+
+If tests fail after an upgrade, please open an issue with your Python version, OS, the failing test names, and the console output.
