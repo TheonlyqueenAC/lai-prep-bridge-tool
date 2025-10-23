@@ -8,13 +8,12 @@ Usage:
     python cli.py validate --config lai_prep_config.json
 """
 
-import click
-import json
 import csv
+import json
 import sys
 from pathlib import Path
-from typing import Dict, List
-from datetime import datetime
+
+import click
 
 # Import assessment functions
 try:

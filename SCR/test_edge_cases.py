@@ -4,10 +4,10 @@ Unit Tests for LAI-PrEP Bridge Decision Support Tool
 Tests edge cases, boundary conditions, and error handling
 """
 
-import pytest
 import json
 import sys
-from pathlib import Path
+
+import pytest
 
 # Import tool components
 try:

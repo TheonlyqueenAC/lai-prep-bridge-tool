@@ -477,7 +477,7 @@ We especially need contributions in these areas:
 
 ### Resources
 - [Technical Documentation](TECHNICAL_DOCUMENTATION.md)
-- [Implementation Guide](NON_TECHNICAL_GUIDE.md)
+- [Implementation Guide](../Clinical%20Implementation%20Guides/NON_TECHNICAL_GUIDE.md)
 - [Testing Guide](TESTING_GUIDE.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 

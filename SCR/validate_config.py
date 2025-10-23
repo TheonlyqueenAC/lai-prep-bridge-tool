@@ -12,8 +12,6 @@ This script validates the configuration JSON file to ensure:
 
 import json
 import sys
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional
 
 
 class ConfigValidator:

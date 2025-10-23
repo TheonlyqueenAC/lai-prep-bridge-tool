@@ -56,7 +56,7 @@ pip install pytest --break-system-packages
 #### Python API
 
 ```python
-from lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
+from SCR.lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
 
 # Initialize tool
 tool = LAIPrEPDecisionTool(use_logit=False)  # or use_logit=True for logit-space
@@ -541,7 +541,7 @@ assess_patient_json(
 ### Example 1: Single Patient Assessment with JSON Export
 
 ```python
-from lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
+from SCR.lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
 import json
 
 # Initialize
@@ -584,7 +584,7 @@ for i, rec in enumerate(assessment.recommended_interventions[:3], 1):
 ### Example 2: Comparing Linear vs Logit Methods
 
 ```python
-from lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
+from SCR.lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
 
 # Extreme case: many barriers
 profile = PatientProfile(
@@ -619,7 +619,7 @@ print(f"Logit Method:   {assessment_logit.adjusted_success_rate:.3f}")
 
 ```python
 import csv
-from lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
+from SCR.lai_prep_decision_tool_v2_1 import LAIPrEPDecisionTool, PatientProfile
 
 tool = LAIPrEPDecisionTool()
 
@@ -637,7 +637,7 @@ results = []
 for patient_data in patients:
     profile = PatientProfile.from_dict(patient_data)
     assessment = tool.assess_patient(profile)
-    
+
     results.append({
         'patient_id': patient_data.get('patient_id', 'unknown'),
         'risk_level': assessment.attrition_risk,
