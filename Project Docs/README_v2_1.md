@@ -1,4 +1,58 @@
 # LAI-PrEP Bridge Period Decision Support Tool v2.1
+# LAI-PrEP Bridge Period Decision Support Tool
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17429833.svg)](https://doi.org/10.5281/zenodo.17429833)
+[![License: Pharma-Restricted](https://img.shields.io/badge/License-Pharma--Restricted-blue.svg)](LICENSE.md)
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![Status: Validated](https://img.shields.io/badge/status-computationally%20validated-green.svg)](https://doi.org/10.5281/zenodo.17429833)
+
+> Clinical decision support for LAI-PrEP bridge period navigation validated at UNAIDS global target scale (21.2M patients)
+
+## 🏥 Free for Healthcare Providers | 🔬 Free for Researchers | ⚠️ Pharma: Permission Required
+
+---
+
+## Quick Links
+
+- 📊 **Zenodo Archive**: https://doi.org/10.5281/zenodo.17429833
+- 📄 **Manuscript**: *Viruses* 2025 (under review)
+- 📖 **Documentation**: [See Wiki](https://github.com/Nyx-Dynamics/lai-prep-bridge-decision-tool/wiki)
+- ⚖️ **License**: [Pharma-Restricted Open Healthcare v1.0](LICENSE.md)
+- 💬 **Contact**: acdemidont@nyxdynamics.org
+
+---
+
+## Citation
+
+If you use this tool in your work, please cite:
+
+**Software:**
+```bibtex
+@software{demidont2025laiprep,
+  author = {Demidont, Adrian C. and Backus, Kandis V.},
+  title = {LAI-PrEP Bridge Period Decision Support Tool},
+  version = {2.1.0},
+  year = {2025},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.17429833},
+  url = {https://github.com/Nyx-Dynamics/lai-prep-bridge-decision-tool}
+}
+```
+
+**Manuscript:**
+```bibtex
+@article{demidont2025validation,
+  author = {Demidont, Adrian C. and Backus, Kandis V.},
+  title = {Computational Validation of Clinical Decision Support Algorithm 
+           for Long-Acting Injectable PrEP Bridge Period Navigation at 
+           UNAIDS Global Target Scale},
+  journal = {Viruses},
+  year = {2025},
+  note = {Under review}
+}
+```
+
+**Plain text:**
 
 ## What's New in v2.1
 
