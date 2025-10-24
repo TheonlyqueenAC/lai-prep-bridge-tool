@@ -3,7 +3,7 @@
 
 **Pharma-Restricted Open Healthcare License v1.0**
 
-Copyright © 2024-2025 Adrian C. Demidont and Kandis Backus
+Copyright © 2024-2025 Adrian C. Demidont, DO
 
 ---
 
