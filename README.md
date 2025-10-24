@@ -739,6 +739,7 @@ with open('results_summary.csv', 'w', newline='') as f:
 If you use this tool in research or clinical practice, please cite:
 
 ```
+Pending Pubs:
 Demidont, A.C. & Backus, K. (2025). Computational Validation of a Clinical 
 Decision Support Algorithm for Long-Acting Injectable PrEP Bridge Period 
 Navigation at UNAIDS Global Target Scale. Viruses, 17(1), XX.
