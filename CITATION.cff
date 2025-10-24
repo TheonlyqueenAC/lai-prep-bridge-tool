@@ -1,0 +1,71 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "LAI-PrEP Bridge Period Decision Support Tool"
+version: 2.1.0
+doi: 10.5281/zenodo.17429833
+date-released: 2025-01-24
+url: "https://github.com/Nyx-Dynamics/lai-prep-bridge-decision-tool"
+repository-code: "https://github.com/Nyx-Dynamics/lai-prep-bridge-decision-tool"
+license: LicenseRef-Pharma-Restricted-Open-Healthcare-1.0
+license-url: "https://github.com/Nyx-Dynamics/lai-prep-bridge-decision-tool/blob/main/LICENSE.md"
+
+authors:
+  - family-names: Demidont
+    given-names: Adrian C.
+    orcid: "https://orcid.org/0000-0002-9216-8569"
+    email: acdemidont@nyxdynamics.org
+    affiliation: "Nyx Dynamics, LLC"
+  - family-names: Backus
+    given-names: Kandis V.
+    orcid: "https://orcid.org/0000-0000-0000-000X"
+    email: kbackus@gilead.com
+    affiliation: "Gilead Sciences, Inc."
+
+abstract: >-
+  Clinical decision support tool validated at UNAIDS global target scale 
+  (21.2 million patients) for long-acting injectable PrEP bridge period 
+  navigation. Provides population-specific risk stratification, 13-item 
+  barrier assessment, and evidence-based selection from 21 interventions. 
+  Demonstrates 81.6% improvement in bridge period success rates, representing 
+  4.1 million additional successful transitions globally and preventing 
+  approximately 100,000 HIV infections annually. Features external JSON 
+  configuration, comprehensive unit testing (100% pass rate), and mechanism 
+  diversity scoring to prevent redundant intervention recommendations.
+
+keywords:
+  - HIV prevention
+  - pre-exposure prophylaxis
+  - long-acting injectable
+  - cabotegravir
+  - lenacapavir
+  - implementation science
+  - clinical decision support
+  - health equity
+  - patient navigation
+  - bridge period
+  - algorithm validation
+  - UNAIDS targets
+
+references:
+  - type: article
+    authors:
+      - family-names: Demidont
+        given-names: Adrian C.
+      - family-names: Backus
+        given-names: Kandis V.
+    title: "Computational Validation of Clinical Decision Support Algorithm for Long-Acting Injectable PrEP Bridge Period Navigation at UNAIDS Global Target Scale"
+    journal: "Viruses"
+    year: 2025
+    status: "in review"
+    notes: "Manuscript under peer review"
+
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17429833
+    description: "Zenodo archive of software, data, and supplementary materials"
+
+contact:
+  - family-names: Demidont
+    given-names: Adrian C.
+    email: acdemidont@nyxdynamics.org
